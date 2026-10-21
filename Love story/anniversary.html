@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Love Story ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #fff7f8;
+      color: #4a2c32;
+      overflow-x: hidden;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      color: #e88b9b;
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      background:
+        linear-gradient(rgba(70, 20, 30, 0.25), rgba(70, 20, 30, 0.4)),
+        url("photos/hero.jpg") center/cover no-repeat;
+    }
+
+    .hero-content {
+      color: white;
+      max-width: 850px;
+      animation: fadeIn 2s ease;
+    }
+
+    .small-title {
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 5vw, 55px);
+      font-weight: normal;
+      font-style: italic;
+      margin-bottom: 15px;
+      text-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+
+    .hero p {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: white;
+      opacity: .8;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 45px;
+      font-weight: normal;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: #98636c;
+      margin-bottom: 60px;
+    }
+
+    /* Intro */
+    .intro {
+      text-align: center;
+      background: #fff;
+    }
+
+    .intro-text {
+      max-width: 700px;
+      margin: auto;
+      font-size: 21px;
+      line-height: 1.9;
+    }
+
+    .heart-divider {
+      color: #d86f83;
+      font-size: 30px;
+      margin: 35px 0;
+    }
+
+    /* Counter */
+    .counter-section {
+      background: #f8dfe3;
+      text-align: center;
+    }
+
+    .counter {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .counter-box {
+      background: rgba(255,255,255,.7);
+      border-radius: 15px;
+      width: 130px;
+      padding: 25px 10px;
+      box-shadow: 0 10px 30px rgba(100,50,60,.08);
+    }
+
+    .counter-box span {
+      display: block;
+      font-size: 42px;
+      color: #b9576b;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+    }
+
+    .counter-box small {
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+    }
+
+    /* Gallery */
+    .gallery {
+      background: #fff;
+    }
+
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .photo {
+      height: 320px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #f1d7db;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .photo:hover img {
+      transform: scale(1.08);
+    }
+
+    .photo:nth-child(2) {
+      height: 390px;
+      margin-top: -35px;
+    }
+
+    .photo:nth-child(5) {
+      height: 390px;
+      margin-top: -35px;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      background: #fff7f8;
+    }
+
+    .timeline {
+      max-width: 700px;
+      margin: auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #e3a4ae;
+      transform: translateX(-50%);
+    }
+
+    .memory {
+      width: 50%;
+      padding: 20px 40px;
+      position: relative;
+    }
+
+    .memory:nth-child(odd) {
+      text-align: right;
+    }
+
+    .memory:nth-child(even) {
+      margin-left: 50%;
+    }
+
+    .memory::after {
+      content: "♥";
+      position: absolute;
+      top: 20px;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #c96678;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .memory:nth-child(odd)::after {
+      right: -18px;
+    }
+
+    .memory:nth-child(even)::after {
+      left: -18px;
+    }
+
+    .memory h3 {
+      font-size: 25px;
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+
+    .memory .date {
+      font-family: Arial, sans-serif;
+      color: #bb5d70;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .memory p {
+      line-height: 1.7;
+      color: #74545b;
+    }
+
+    /* Letter */
+    .letter-section {
+      background: #f8dfe3;
+    }
+
+    .letter {
+      max-width: 700px;
+      margin: auto;
+      background: #fffdf8;
+      padding: 60px;
+      box-shadow: 0 15px 50px rgba(90,40,50,.12);
+      transform: rotate(-1deg);
+      border-radius: 3px;
+    }
+
+    .letter h2 {
+      font-size: 35px;
+      font-style: italic;
+      font-weight: normal;
+      margin-bottom: 30px;
+    }
+
+    .letter p {
+      font-size: 18px;
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+
+    .signature {
+      text-align: right;
+      font-size: 25px;
+      font-style: italic;
+      margin-top: 30px;
+    }
+
+    /* Final */
+    .final {
+      min-height: 70vh;
+      background:
+        linear-gradient(rgba(50, 15, 25, .45), rgba(50, 15, 25, .55)),
+        url("photos/final.jpg") center/cover no-repeat;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .final h2 {
+      font-size: clamp(45px, 8vw, 80px);
+      font-weight: normal;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .final p {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+
+    footer {
+      background: #321c21;
+      color: #eacdd1;
+      text-align: center;
+      padding: 25px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      section {
+        padding: 70px 18px;
+      }
+
+      .photos {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .photo,
+      .photo:nth-child(2),
+      .photo:nth-child(5) {
+        height: 250px;
+        margin-top: 0;
+      }
+
+      .timeline::before {
+        left: 15px;
+      }
+
+      .memory,
+      .memory:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 50px;
+        padding-right: 10px;
+        text-align: left;
+      }
+
+      .memory:nth-child(odd)::after,
+      .memory:nth-child(even)::after {
+        left: -2px;
+        right: auto;
+      }
+
+      .letter {
+        padding: 35px 25px;
+      }
+
+      .counter {
+        gap: 10px;
+      }
+
+      .counter-box {
+        width: 100px;
+      }
+
+      .counter-box span {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating hearts -->
+  <div class="heart" style="left:10%; animation-duration:8s;">♥</div>
+  <div class="heart" style="left:25%; animation-duration:11s; animation-delay:2s;">♥</div>
+  <div class="heart" style="left:45%; animation-duration:9s; animation-delay:1s;">♥</div>
+  <div class="heart" style="left:65%; animation-duration:12s; animation-delay:3s;">♥</div>
+  <div class="heart" style="left:85%; animation-duration:10s; animation-delay:4s;">♥</div>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="small-title">
+        Our Anniversary
+      </div>
+
+      <!-- CHANGE NAMES HERE -->
+      <h1>Zaw Ya Wai Htun & Su Myat Noe</h1>
+
+      <p>
+        One love. One story. A thousand beautiful memories.
+      </p>
+
+    </div>
+
+    <div class="scroll">
+      SCROLL TO OUR STORY ↓
+    </div>
+
+  </section>
+
+
+  <!-- INTRO -->
+  <section class="intro">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Our Story
+      </h2>
+
+      <div class="heart-divider">
+        ♥
+      </div>
+
+      <!-- CHANGE YOUR MESSAGE HERE -->
+      <p class="intro-text">
+        From the moment we met, life became a little brighter,
+        laughter became a little louder, and every ordinary moment
+        became something worth remembering.
+        <br><br>
+        This little website is a collection of some of the moments
+        that made our journey so special.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- COUNTER -->
+  <section class="counter-section">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Together For
+      </h2>
+
+      <!-- CHANGE DATE IN JAVASCRIPT BELOW -->
+      <p class="section-subtitle">
+        And counting... ❤️
+      </p>
+
+      <div class="counter">
+
+        <div class="counter-box">
+          <span id="years">0</span>
+          <small>Years</small>
+        </div>
+
+        <div class="counter-box">
+          <span id="months">0</span>
+          <small>Months</small>
+        </div>
+
+        <div class="counter-box">
+          <span id="days">0</span>
+          <small>Days</small>
+        </div>
+
+        <div class="counter-box">
+          <span id="hours">0</span>
+          <small>Hours</small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHOTO GALLERY -->
+  <section class="gallery">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Our Memories
+      </h2>
+
+      <p class="section-subtitle">
+        A few of my favorite moments with you.
+      </p>
+
+      <div class="photos">
+
+        <!-- Replace these with your own photos -->
+        <div class="photo">
+          <img src="photos/photo1.jpg" alt="Our memory">
+        </div>
+
+        <div class="photo">
+          <img src="photos/photo2.jpg" alt="Our memory">
+        </div>
+
+        <div class="photo">
+          <img src="photos/photo3.jpg" alt="Our memory">
+        </div>
+
+        <div class="photo">
+          <img src="photos/photo4.jpg" alt="Our memory">
+        </div>
+
+        <div class="photo">
+          <img src="photos/photo5.jpg" alt="Our memory">
+        </div>
+
+        <div class="photo">
+          <img src="photos/photo6.jpg" alt="Our memory">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        The Moments That Matter
+      </h2>
+
+      <p class="section-subtitle">
+        Our little journey together
+      </p>
+
+      <div class="timeline">
+
+        <div class="memory">
+
+          <div class="date">
+            JANUARY 2022
+          </div>
+
+          <h3>The Beginning</h3>
+
+          <p>
+            This is where our story began. Two people,
+            one unexpected meeting, and a feeling neither
+            of us could explain.
+          </p>
+
+        </div>
+
+
+        <div class="memory">
+
+          <div class="date">
+            JUNE 2022
+          </div>
+
+          <h3>Our First Adventure</h3>
+
+          <p>
+            Our first little adventure together.
+            We made memories that we still talk about today.
+          </p>
+
+        </div>
+
+
+        <div class="memory">
+
+          <div class="date">
+            DECEMBER 2023
+          </div>
+
+          <h3>A Special Moment</h3>
+
+          <p>
+            One of those days that you wish you could
+            freeze forever.
+          </p>
+
+        </div>
+
+
+        <div class="memory">
+
+          <div class="date">
+            TODAY
+          </div>
+
+          <h3>Still Us ❤️</h3>
+
+          <p>
+            After all this time, you're still my favorite
+            person, my favorite place, and my favorite story.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LOVE LETTER -->
+  <section class="letter-section">
+
+    <div class="container">
+
+      <div class="letter">
+
+        <h2>To My Favorite Person,</h2>
+
+        <!-- CHANGE THIS LETTER -->
+        <p>
+          I don't know exactly what the future will look like,
+          but I know I want to experience it with you.
+        </p>
+
+        <p>
+          Thank you for every laugh, every hug, every adventure,
+          every late-night conversation, and every little moment
+          in between.
+        </p>
+
+        <p>
+          If I could go back and live our story all over again,
+          I would choose you every single time.
+        </p>
+
+        <p>
+          Happy Anniversary, my love.
+          Here's to everything we've been through,
+          everything we are, and everything still waiting for us.
+        </p>
+
+        <div class="signature">
+          Forever yours ❤️
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+  <section class="final">
+
+    <div>
+
+      <h2>
+        Forever & Always
+      </h2>
+
+      <p>
+        HAPPY ANNIVERSARY ❤️
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    Made with love ❤️
+  </footer>
+
+
+  <script>
+
+    /*
+      ========================================
+      CHANGE YOUR ANNIVERSARY DATE HERE
+      ========================================
+
+      Format:
+      YYYY-MM-DDTHH:MM:SS
+
+      Example:
+      June 15, 2022 at midnight:
+      2022-06-15T00:00:00
+
+    */
+
+    const anniversaryDate = new Date("2022-10-23T00:00:00");
+
+
+    function updateCounter() {
+
+      const now = new Date();
+
+      let difference = now - anniversaryDate;
+
+      if (difference < 0) {
+        difference = 0;
+      }
+
+      // Total days
+      const totalDays = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+      );
+
+      // Years
+      let years = now.getFullYear() -
+                  anniversaryDate.getFullYear();
+
+      // Adjust if anniversary hasn't happened yet this year
+      const anniversaryThisYear = new Date(
+        now.getFullYear(),
+        anniversaryDate.getMonth(),
+        anniversaryDate.getDate()
+      );
+
+      if (now < anniversaryThisYear) {
+        years--;
+      }
+
+      // Months after years
+      let months =
+        (now.getFullYear() - anniversaryDate.getFullYear()) * 12 +
+        (now.getMonth() - anniversaryDate.getMonth());
+
+      if (now.getDate() < anniversaryDate.getDate()) {
+        months--;
+      }
+
+      months = months % 12;
+
+      // Hours
+      const hours = Math.floor(
+        difference / (1000 * 60 * 60)
+      ) % 24;
+
+
+      document.getElementById("years").textContent = years;
+      document.getElementById("months").textContent = months;
+      document.getElementById("days").textContent = totalDays;
+      document.getElementById("hours").textContent = hours;
+
+    }
+
+    updateCounter();
+
+    // Update every minute
+    setInterval(updateCounter, 60000);
+
+
+  </script>
+
+</body>
+</html>
